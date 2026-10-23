@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="QuiroMougan: recuperación de lesiones, entrenamiento personal y quiromasaje en Santiago de Compostela.">
+
+    <meta name="description" content="QuiroMougan en Santiago de Compostela. Quiromasaje, osteopatía, recuperación de lesiones y entrenamiento personal.">
+
     <title>QuiroMougan | Tu bienestar integral</title>
 
     <style>
@@ -31,45 +33,72 @@
             line-height: 1.6;
         }
 
+        h1, h2, h3, h4 {
+            font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+        }
+
         /* PORTADA */
-
+        
         .portada {
-            background-color: var(--blanco);
+            background-color: #FFFFFF;
             text-align: center;
-            padding: 42px 20px 36px;
+            padding: 45px 20px 40px;
         }
-
+        
         .logo {
-            max-width: 260px;
-            width: 75%;
-            height: auto;
-            margin: 0 auto 12px;
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto 24px;
         }
-
-        .logo-text {
+        
+        .logo img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+        
+        .portada-servicios {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .portada-servicios p {
+            margin: 0;
             color: var(--morado);
-            font-size: clamp(2rem, 5vw, 3rem);
+            font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+            font-size: clamp(0.9rem, 2.5vw, 1.15rem);
             font-weight: bold;
             letter-spacing: 1px;
-            margin: 0;
-        }
-
-        .slogan {
-            width: 100%;
-            margin: 12px auto 0;
             text-align: center;
-            color: var(--morado);
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            font-weight: bold;
+        }
+        
+        .linea-verde {
+            width: 150px;
+            max-width: 40%;
+            height: 1px;
+            background-color: var(--verde-lima);
+        }
+        
+        @media (max-width: 700px) {
+            .portada {
+                padding: 32px 16px;
+            }
+        
+            .logo {
+                max-width: 260px;
+                margin-bottom: 22px;
+            }
+        
+            .portada-servicios p {
+                letter-spacing: 0.5px;
+            }
         }
 
-        .portada-descripcion {
-            max-width: 650px;
-            margin: 8px auto 0;
-            font-size: 0.95rem;
-        }
 
-        /* MENÚ DE NAVEGACIÓN */
+        /* MENÚ */
 
         .menu {
             position: sticky;
@@ -103,7 +132,7 @@
             color: var(--verde-lima);
         }
 
-        /* CONTENIDO GENERAL */
+        /* CONTENIDO */
 
         main {
             max-width: 1100px;
@@ -121,10 +150,6 @@
             box-shadow: var(--sombra);
             scroll-margin-top: 95px;
             animation: aparecer 0.6s ease both;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
         }
 
         .section h2 {
@@ -145,10 +170,38 @@
             margin-top: 0;
         }
 
-        /* INICIO */
+        /* INICIO: SERVICIOS CON ICONOS SVG */
 
         .inicio-texto {
-            max-width: 800px;
+            max-width: 850px;
+        }
+
+        .inicio-servicios {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .inicio-servicio {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        .icono-svg {
+            width: 23px;
+            height: 23px;
+            flex-shrink: 0;
+            color: var(--morado);
+            margin-top: 3px;
+        }
+
+        .inicio-servicio strong {
+            color: var(--morado);
+            font-weight: bold;
         }
 
         /* SERVICIOS */
@@ -184,6 +237,12 @@
             text-align: center;
             padding: 12px;
             font-size: 0.9rem;
+        }
+
+        .foto-servicio img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .servicio-contenido {
@@ -238,12 +297,19 @@
             font-size: 0.9rem;
         }
 
-        /* BOTONES Y PIE DE PÁGINA */
+        .foto-contacto img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* BOTÓN */
 
         .boton {
             display: inline-block;
             background-color: var(--morado);
-            color: var(--blanco);
+            color: var(--blanco) !important;
             text-decoration: none;
             padding: 11px 20px;
             border-radius: 25px;
@@ -256,6 +322,8 @@
             background-color: #52335D;
             transform: translateY(-2px);
         }
+
+        /* PIE DE PÁGINA */
 
         footer {
             background-color: var(--morado);
@@ -270,7 +338,7 @@
             margin: 0;
         }
 
-        /* ANIMACIÓN DISCRETA */
+        /* ANIMACIÓN */
 
         @keyframes aparecer {
             from {
@@ -284,7 +352,7 @@
             }
         }
 
-        /* ADAPTACIÓN A MÓVILES */
+        /* MÓVILES */
 
         @media (max-width: 700px) {
             .portada {
@@ -319,6 +387,15 @@
             .foto-servicio {
                 height: 175px;
             }
+
+            .inicio-servicio {
+                gap: 9px;
+            }
+
+            .icono-svg {
+                width: 21px;
+                height: 21px;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -337,20 +414,22 @@
 
     <!-- PORTADA -->
     <header class="portada" id="arriba">
-
-        <!-- Puedes sustituir este texto por la imagen de tu logotipo -->
+    
         <div class="logo">
-            <p class="logo-text">QuiroMougan</p>
+            <img
+                src="images/logo-quiromougan.png"
+                alt="Logotipo de QuiroMougan"
+            >
         </div>
-
-        <p class="slogan">
-            ¡Tu bienestar integral en un solo lugar!
-        </p>
-
-        <p class="portada-descripcion">
-            Recuperación, movimiento y cuidado corporal en un mismo espacio.
-        </p>
-
+    
+        <div class="portada-servicios">
+            <p>QUIROMASAJE - OSTEOPATÍA</p>
+    
+            <div class="linea-verde"></div>
+    
+            <p>ENTRENAMIENTO PERSONAL</p>
+        </div>
+    
     </header>
 
     <!-- MENÚ -->
@@ -366,90 +445,148 @@
 
         <!-- INICIO -->
         <section class="section" id="inicio">
-            <h2>Bienvenidos a QuiroMougan</h2>
+
+            <h2>Inicio</h2>
 
             <div class="inicio-texto">
-                <p>
-                    En QuiroMougan encontrarás un espacio dedicado a tu
-                    bienestar, la recuperación de lesiones y el cuidado
-                    de tu cuerpo.
-                </p>
 
                 <p>
-                    Combinamos diferentes servicios para ayudarte a moverte
-                    mejor, recuperarte y cuidar de ti de una forma cercana
-                    y personalizada.
+                    Un espacio dedicado a unir dos mundos para cuidar el
+                    cuerpo y potenciar la persona en su totalidad. Aquí
+                    se combina la recuperación y el alivio físico con el
+                    entrenamiento y fortalecimiento, trabajando juntos
+                    para lograr una mejora integral del cuerpo y del
+                    bienestar general.
                 </p>
+
+                <div class="inicio-servicios">
+
+                    <!-- QUIROMASAJE Y OSTEOPATÍA -->
+                    <p class="inicio-servicio">
+
+                        <svg class="icono-svg"
+                             viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             aria-hidden="true">
+
+                            <path d="M7 11V5.5a1.5 1.5 0 0 1 3 0V10"/>
+                            <path d="M10 9V4.5a1.5 1.5 0 0 1 3 0V10"/>
+                            <path d="M13 9V5.5a1.5 1.5 0 0 1 3 0V12"/>
+                            <path d="M16 11V8.5a1.5 1.5 0 0 1 3 0V15c0 3.3-2.7 6-6 6h-2.2a5 5 0 0 1-3.8-1.8L4.5 16a1.7 1.7 0 0 1 2.4-2.4L10 16"/>
+
+                        </svg>
+
+                        <span>
+                            <strong>Quiromasaje &amp; Osteopatía:</strong>
+                            Recupera movilidad, alivia tensiones y ayuda a
+                            que el cuerpo funcione de manera óptima.
+                        </span>
+
+                    </p>
+
+                    <!-- ENTRENAMIENTO PERSONAL -->
+                    <p class="inicio-servicio">
+
+                        <svg class="icono-svg"
+                             viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             aria-hidden="true">
+
+                            <path d="M6.5 9v6"/>
+                            <path d="M4 10v4"/>
+                            <path d="M17.5 9v6"/>
+                            <path d="M20 10v4"/>
+                            <path d="M6.5 12h11"/>
+
+                        </svg>
+
+                        <span>
+                            <strong>Entrenamiento personal:</strong>
+                            Fortalece músculos, previene lesiones y potencia
+                            tu rendimiento diario.
+                        </span>
+
+                    </p>
+
+                </div>
             </div>
         </section>
 
         <!-- SERVICIOS -->
         <section class="section" id="servicios">
-            <h2>Nuestros servicios</h2>
+
+            <h2>Servicios</h2>
 
             <div class="servicios-grid">
 
                 <article class="servicio">
+
                     <div class="foto-servicio">
-                        <!-- Sustituir por una foto del servicio -->
                         Foto de recuperación de lesiones
                     </div>
 
                     <div class="servicio-contenido">
                         <h3>Recuperación de lesiones</h3>
                         <p>
-                            Trabajo orientado a recuperar la movilidad
-                            y facilitar una vuelta progresiva a la actividad,
-                            adaptada a cada persona.
+                            Tratamientos que ayudan a que tu cuerpo vuelva a moverse con libertad y recupere fuerza. Permiten recuperar funcionalidad, disminuir molestias y prevenir recaidas o futuras lesiones.
                         </p>
                     </div>
+
                 </article>
 
                 <article class="servicio">
+
                     <div class="foto-servicio">
-                        <!-- Sustituir por una foto del servicio -->
                         Foto de entrenamiento personal
                     </div>
 
                     <div class="servicio-contenido">
                         <h3>Entrenamiento personal</h3>
                         <p>
-                            Entrenamientos adaptados a tus objetivos,
-                            necesidades y nivel para mejorar tu condición
-                            física y mantenerte en movimiento.
+                            Planes totalmente personalizados según tus necesidades y objetivos. Te ayudarán a fortalecer, mejorar el equilibrio y coordinación, y progresar de manera segura hacia tu mejor versión.
                         </p>
                     </div>
+
                 </article>
 
                 <article class="servicio">
+
                     <div class="foto-servicio">
-                        <!-- Sustituir por una foto del servicio -->
                         Foto de quiromasaje deportivo
                     </div>
 
                     <div class="servicio-contenido">
                         <h3>Quiromasaje deportivo</h3>
                         <p>
-                            Técnicas manuales orientadas al cuidado muscular
-                            y a la recuperación después de la actividad física.
+                            Sesiones para aliviar tensiones y preparar tus músculos para la actividad deportiva. Reducir el dolor musuclar y optimizar la recuperación tras el entrenamiento o competición.
                         </p>
                     </div>
+
                 </article>
 
                 <article class="servicio">
+
                     <div class="foto-servicio">
-                        <!-- Sustituir por una foto del servicio -->
                         Foto de quiromasaje
                     </div>
 
                     <div class="servicio-contenido">
                         <h3>Quiromasaje</h3>
                         <p>
-                            Un espacio para cuidar el cuerpo, aliviar la
-                            sensación de tensión muscular y dedicarte
-                            un momento de bienestar.
+                            Masaje orientado a liberar tensiones musculares y mejorar el bienestar del cuerpo. Ayuda a reducir sobrecargas, activar la circulación y favorecer la recuperación muscular.
                         </p>
                     </div>
+
                 </article>
 
             </div>
@@ -457,11 +594,13 @@
 
         <!-- CONTACTO -->
         <section class="section" id="contacto">
+
             <h2>Contacto</h2>
 
             <div class="contacto-grid">
 
                 <div class="contacto-datos">
+
                     <h3>Estamos en Santiago de Compostela</h3>
 
                     <p>
@@ -483,13 +622,11 @@
                         </a>
                     </p>
 
-                    <!-- Añadir el teléfono cuando esté confirmado -->
                     <p>
                         <strong>Teléfono:</strong><br>
                         Próximamente
                     </p>
 
-                    <!-- Añadir los horarios cuando estén confirmados -->
                     <p>
                         <strong>Horario:</strong><br>
                         Consultar disponibilidad
@@ -501,6 +638,7 @@
                        rel="noopener noreferrer">
                         Escríbenos por Instagram
                     </a>
+
                 </div>
 
                 <div class="contacto-fotos">
