@@ -1,400 +1,540 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="QuiroMougan: recuperación, entrenamiento personal y quiromasaje en Santiago de Compostela.">
-  <meta name="theme-color" content="#684174">
-  <title>QuiroMougan | Recuperación, entrenamiento y quiromasaje</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="QuiroMougan: recuperación de lesiones, entrenamiento personal y quiromasaje en Santiago de Compostela.">
+    <title>QuiroMougan | Tu bienestar integral</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --morado: #684174;
+            --verde-lima: #A6CE39;
+            --fondo: #EAF0E2;
+            --blanco: #FFFFFF;
+            --texto: #29262B;
+            --sombra: 0 4px 16px rgba(41, 38, 43, 0.09);
+            --radio: 16px;
+        }
 
-  <style>
-    :root {
-      --morado: #684174;
-      --verde: #A6CE39;
-      --fondo: #EAF0E2;
-      --blanco: #FFFFFF;
-      --texto: #29262B;
-      --texto-suave: #625D64;
-      --sombra: 0 10px 28px rgba(41, 38, 43, 0.09);
-      --radio: 18px;
-      --ancho: 1080px;
-    }
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 95px; }
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: var(--fondo);
-      color: var(--texto);
-      line-height: 1.65;
-    }
-    img { display: block; max-width: 100%; }
-    a { color: inherit; }
-    .contenedor { width: min(var(--ancho), calc(100% - 40px)); margin-inline: auto; }
+        body {
+            margin: 0;
+            font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+            background-color: var(--fondo);
+            color: var(--texto);
+            line-height: 1.6;
+        }
 
-    /* Menú fijo */
-    .navegacion {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--morado);
-      border-bottom: 5px solid var(--verde);
-      box-shadow: 0 4px 16px rgba(41, 38, 43, 0.12);
-    }
-    .nav-interior {
-      min-height: 68px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: clamp(20px, 5vw, 62px);
-      padding: 8px 20px;
-    }
-    .navegacion a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color .2s ease, transform .2s ease;
-    }
-    .navegacion a:hover,
-    .navegacion a:focus-visible { color: var(--verde); transform: translateY(-1px); }
+        /* PORTADA */
 
-    /* Portada: fondo blanco; aquí irá el logo y el titular definitivos */
-    .portada {
-      min-height: 390px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      background: var(--blanco);
-      padding: 64px 20px;
-    }
-    .portada-contenido { width: min(800px, 100%); }
-    .logo-provisional {
-      width: min(290px, 72%);
-      min-height: 110px;
-      margin: 0 auto 22px;
-      display: grid;
-      place-items: center;
-      border: 2px dashed #c9bdce;
-      border-radius: 14px;
-      color: var(--morado);
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: .04em;
-      padding: 20px;
-    }
-    .portada h1 {
-      color: var(--morado);
-      font-size: clamp(2rem, 4.5vw, 3.3rem);
-      line-height: 1.15;
-      margin: 0 0 16px;
-    }
-    .portada p {
-      max-width: 650px;
-      margin: 0 auto;
-      color: var(--texto-suave);
-      font-size: clamp(1rem, 2vw, 1.15rem);
-    }
-    .acento {
-      width: 90px;
-      height: 5px;
-      border-radius: 99px;
-      background: var(--verde);
-      margin: 24px auto 0;
-    }
+        .portada {
+            background-color: var(--blanco);
+            text-align: center;
+            padding: 42px 20px 36px;
+        }
 
-    main { padding: 1px 0 30px; }
-    .seccion {
-      background: var(--blanco);
-      margin: 42px auto;
-      padding: clamp(26px, 5vw, 52px);
-      border: 1px solid rgba(104, 65, 116, .08);
-      border-radius: var(--radio);
-      box-shadow: var(--sombra);
-      scroll-margin-top: 94px;
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity .65s ease, transform .65s ease;
-    }
-    .seccion.visible { opacity: 1; transform: translateY(0); }
-    .seccion h2 {
-      color: var(--morado);
-      font-size: clamp(1.7rem, 3vw, 2.25rem);
-      line-height: 1.25;
-      margin: 0 0 10px;
-    }
-    .subtitulo {
-      color: var(--texto-suave);
-      max-width: 720px;
-      margin: 0 0 30px;
-    }
-    .linea-titulo {
-      width: 76px;
-      height: 4px;
-      background: var(--verde);
-      border-radius: 99px;
-      margin: 0 0 24px;
-    }
+        .logo {
+            max-width: 260px;
+            width: 75%;
+            height: auto;
+            margin: 0 auto 12px;
+        }
 
-    /* Servicios */
-    .servicios-lista { display: grid; gap: 18px; }
-    .servicio {
-      display: grid;
-      grid-template-columns: 150px minmax(0, 1fr);
-      align-items: center;
-      gap: 24px;
-      padding: 18px;
-      border: 1px solid #e8e2eb;
-      border-radius: 15px;
-      background: #fff;
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .servicio:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(41,38,43,.08); }
-    .servicio-foto {
-      width: 150px;
-      aspect-ratio: 4 / 3;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      border: 4px solid var(--verde);
-      border-radius: 12px;
-      background: var(--fondo);
-      color: var(--morado);
-      font-size: .85rem;
-      text-align: center;
-      padding: 8px;
-    }
-    .servicio-foto img { width: 100%; height: 100%; object-fit: cover; }
-    .servicio h3 { color: var(--morado); margin: 0 0 8px; font-size: 1.2rem; }
-    .servicio p { margin: 0; color: var(--texto-suave); }
+        .logo-text {
+            color: var(--morado);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin: 0;
+        }
 
-    /* Contacto */
-    .contacto-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-    }
-    .contacto-panel {
-      background: #fbfcf9;
-      border: 1px solid #e5ebdc;
-      border-radius: 14px;
-      padding: 22px;
-    }
-    .contacto-panel h3 { color: var(--morado); margin: 0 0 10px; }
-    .contacto-panel p { margin: 8px 0; }
-    .enlaces-contacto { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
-    .boton {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--morado);
-      color: white;
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background .2s ease, transform .2s ease;
-    }
-    .boton:hover { background: #50305b; transform: translateY(-2px); }
-    .fotos-local {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 24px;
-    }
-    .foto-local {
-      aspect-ratio: 4 / 3;
-      display: grid;
-      place-items: center;
-      border: 3px solid var(--verde);
-      border-radius: 13px;
-      overflow: hidden;
-      background: var(--fondo);
-      color: var(--morado);
-      text-align: center;
-      padding: 10px;
-      font-size: .9rem;
-    }
-    .foto-local img { width: 100%; height: 100%; object-fit: cover; }
+        .slogan {
+            width: 100%;
+            margin: 12px auto 0;
+            text-align: center;
+            color: var(--morado);
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            font-weight: bold;
+        }
 
-    footer { text-align: center; color: var(--texto-suave); padding: 8px 20px 32px; font-size: .9rem; }
-    footer strong { color: var(--morado); }
+        .portada-descripcion {
+            max-width: 650px;
+            margin: 8px auto 0;
+            font-size: 0.95rem;
+        }
 
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
-    }
-    @media (max-width: 680px) {
-      .contenedor { width: min(100% - 24px, var(--ancho)); }
-      .nav-interior { min-height: 60px; gap: clamp(16px, 6vw, 30px); padding-inline: 12px; }
-      .navegacion a { font-size: .92rem; }
-      .portada { min-height: 330px; padding: 48px 18px; }
-      .seccion { margin: 22px auto; padding: 25px 18px; border-radius: 15px; }
-      .servicio { grid-template-columns: 100px minmax(0, 1fr); gap: 14px; padding: 12px; }
-      .servicio-foto { width: 100px; border-width: 3px; }
-      .servicio h3 { font-size: 1.03rem; }
-      .servicio p { font-size: .92rem; }
-      .contacto-grid { grid-template-columns: 1fr; }
-      .fotos-local { grid-template-columns: 1fr; }
-      .foto-local { aspect-ratio: 16 / 9; }
-    }
-  
-/* Portada de marca situada por encima del menú */
-.masthead {
-  background: #FFFFFF;
-  color: #29262B;
-  text-align: center;
-  padding: clamp(2.5rem, 7vw, 5rem) 1.25rem;
-}
-.masthead h1 { color: #684174; margin: 1rem auto 0.5rem; }
-.masthead p { max-width: 42rem; margin: 0.5rem auto 0; }
-.masthead .logo-placeholder {
-  display: grid; place-items: center; min-height: 5rem; max-width: 22rem;
-  margin: 0 auto; padding: 1rem; border: 1px dashed #A6CE39; border-radius: 1rem;
-  color: #684174; font-weight: 600;
-}
-.intro-section .section-inner {
-  background: #FFFFFF; border-radius: 1rem; padding: clamp(1.25rem, 4vw, 2rem);
-  box-shadow: 0 8px 24px rgba(41, 38, 43, 0.06);
-}
-.intro-section h2 { color: #684174; }
-.intro-section h2::after {
-  content: ""; display: block; width: 3rem; height: 3px; margin-top: .65rem;
-  border-radius: 99px; background: #A6CE39;
-}
+        /* MENÚ DE NAVEGACIÓN */
 
-</style>
+        .menu {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--morado);
+            border-bottom: 5px solid var(--verde-lima);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+        }
+
+        .menu ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 42px;
+            list-style: none;
+            padding: 14px 20px;
+            margin: 0;
+        }
+
+        .menu a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: color 0.2s ease;
+        }
+
+        .menu a:hover,
+        .menu a:focus-visible {
+            color: var(--verde-lima);
+        }
+
+        /* CONTENIDO GENERAL */
+
+        main {
+            max-width: 1100px;
+            width: calc(100% - 40px);
+            margin: 0 auto;
+            padding-top: 24px;
+            padding-bottom: 12px;
+        }
+
+        .section {
+            background-color: var(--blanco);
+            padding: 30px;
+            margin-bottom: 24px;
+            border-radius: var(--radio);
+            box-shadow: var(--sombra);
+            scroll-margin-top: 95px;
+            animation: aparecer 0.6s ease both;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+        }
+
+        .section h2 {
+            color: var(--morado);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin: 0 0 18px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--verde-lima);
+        }
+
+        .section h3 {
+            color: var(--morado);
+            font-size: 1.15rem;
+            margin-top: 0;
+        }
+
+        p {
+            margin-top: 0;
+        }
+
+        /* INICIO */
+
+        .inicio-texto {
+            max-width: 800px;
+        }
+
+        /* SERVICIOS */
+
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .servicio {
+            overflow: hidden;
+            background-color: var(--blanco);
+            border: 1px solid #E5E8DF;
+            border-radius: 14px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .servicio:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--sombra);
+        }
+
+        .foto-servicio {
+            width: 100%;
+            height: 190px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #F0F3EA;
+            color: var(--morado);
+            border-bottom: 3px solid var(--verde-lima);
+            text-align: center;
+            padding: 12px;
+            font-size: 0.9rem;
+        }
+
+        .servicio-contenido {
+            padding: 20px;
+        }
+
+        .servicio-contenido h3 {
+            margin-bottom: 8px;
+        }
+
+        .servicio-contenido p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        /* CONTACTO */
+
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            align-items: start;
+        }
+
+        .contacto-datos p {
+            margin-bottom: 12px;
+        }
+
+        .contacto-datos a {
+            color: var(--morado);
+            font-weight: bold;
+            overflow-wrap: anywhere;
+        }
+
+        .contacto-fotos {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        .foto-contacto {
+            min-height: 135px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 16px;
+            background-color: #F0F3EA;
+            color: var(--morado);
+            border-radius: 12px;
+            border-left: 4px solid var(--verde-lima);
+            font-size: 0.9rem;
+        }
+
+        /* BOTONES Y PIE DE PÁGINA */
+
+        .boton {
+            display: inline-block;
+            background-color: var(--morado);
+            color: var(--blanco);
+            text-decoration: none;
+            padding: 11px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background-color 0.2s ease,
+                        transform 0.2s ease;
+        }
+
+        .boton:hover {
+            background-color: #52335D;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background-color: var(--morado);
+            color: var(--blanco);
+            text-align: center;
+            padding: 22px 16px;
+            border-top: 5px solid var(--verde-lima);
+            font-size: 0.85rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* ANIMACIÓN DISCRETA */
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ADAPTACIÓN A MÓVILES */
+
+        @media (max-width: 700px) {
+            .portada {
+                padding: 30px 16px;
+            }
+
+            .menu ul {
+                gap: 24px;
+                padding: 13px 10px;
+            }
+
+            .menu a {
+                font-size: 0.9rem;
+            }
+
+            main {
+                width: calc(100% - 24px);
+                padding-top: 24px;
+            }
+
+            .section {
+                padding: 22px 18px;
+                margin-bottom: 24px;
+                scroll-margin-top: 85px;
+            }
+
+            .servicios-grid,
+            .contacto-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .foto-servicio {
+                height: 175px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <header class="masthead" id="inicio" class="portada">
-    <div class="portada-contenido">
-      <!-- Más adelante puedes sustituir este recuadro por tu logo:
-           <img src="images/logo-quiromougan.png" alt="QuiroMougan" class="logo-real"> -->
-      <div class="logo-provisional">Tu logotipo de QuiroMougan</div>
-      <h1>¡Tu bienestar integral en un solo lugar!</h1>
-      <p>Un espacio que combina recuperación, entrenamiento personal y quiromasaje para acompañarte en el cuidado de tu bienestar.</p>
-      <div class="acento" aria-hidden="true"></div>
-    </div>
-  </header>
 
-<nav class="navegacion" aria-label="Navegación principal">
-    <div class="nav-interior">
-      <a href="#inicio">Inicio</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#contacto">Contacto</a>
-    </div>
-  </nav>
+    <!-- PORTADA -->
+    <header class="portada" id="arriba">
 
-  
-
-  <main class="contenedor">
-    
-<section id="inicio" class="section intro-section">
-  <div class="section-inner">
-    <h2>Inicio</h2>
-    <p>QuiroMougan es un espacio dedicado al bienestar, el movimiento y el cuidado corporal. Aquí conviven el entrenamiento personal y el quiromasaje para ofrecerte distintas opciones según tus necesidades y objetivos.</p>
-  </div>
-</section>
-
-<section id="servicios" class="seccion">
-      <h2>Servicios</h2>
-      <div class="linea-titulo" aria-hidden="true"></div>
-      <p class="subtitulo">Descubre las diferentes opciones y encuentra la que mejor encaje con tus necesidades. <em>(Texto provisional)</em></p>
-
-      <div class="servicios-lista">
-        <article class="servicio">
-          <div class="servicio-foto">Foto de recuperación</div>
-          <div>
-            <h3>Recuperación de lesiones</h3>
-            <p>Apoyo y acompañamiento en el proceso de recuperación, adaptando el trabajo a cada persona. <em>(Texto provisional)</em></p>
-          </div>
-        </article>
-
-        <article class="servicio">
-          <div class="servicio-foto">Foto de entrenamiento</div>
-          <div>
-            <h3>Entrenamiento personal</h3>
-            <p>Entrenamientos adaptados a tus objetivos, necesidades y punto de partida. <em>(Texto provisional)</em></p>
-          </div>
-        </article>
-
-        <article class="servicio">
-          <div class="servicio-foto">Foto de quiromasaje deportivo</div>
-          <div>
-            <h3>Quiromasaje deportivo</h3>
-            <p>Trabajo manual orientado al cuidado muscular relacionado con la actividad física. <em>(Texto provisional)</em></p>
-          </div>
-        </article>
-
-        <article class="servicio">
-          <div class="servicio-foto">Foto de quiromasaje</div>
-          <div>
-            <h3>Quiromasaje</h3>
-            <p>Un espacio para dedicar tiempo al cuidado corporal y al bienestar. <em>(Texto provisional)</em></p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="contacto" class="seccion">
-      <h2>Contacto</h2>
-      <div class="linea-titulo" aria-hidden="true"></div>
-      <p class="subtitulo">Puedes encontrar QuiroMougan en Santiago de Compostela. Pronto añadiremos aquí los datos de contacto definitivos.</p>
-
-      <div class="contacto-grid">
-        <div class="contacto-panel">
-          <h3>Ubicación</h3>
-          <p><strong>Santiago de Compostela</strong></p>
-          <p>Dirección exacta pendiente de añadir.</p>
-          <!-- Cuando tengamos la dirección, podemos añadir un enlace a Google Maps. -->
+        <!-- Puedes sustituir este texto por la imagen de tu logotipo -->
+        <div class="logo">
+            <p class="logo-text">QuiroMougan</p>
         </div>
-        <div class="contacto-panel">
-          <h3>Hablemos</h3>
-          <p>Teléfono, horario y correo electrónico pendientes de añadir.</p>
-          <div class="enlaces-contacto">
-            <!-- Sustituye el enlace cuando confirmemos la URL exacta del perfil. -->
-            <a class="boton" href="https://www.instagram.com/quiromougan/" target="_blank" rel="noopener noreferrer">Instagram @quiromougan</a>
-          </div>
-        </div>
-      </div>
 
-      <div class="fotos-local" aria-label="Fotografías del espacio">
-        <div class="foto-local">Foto del escaparate</div>
-        <div class="foto-local">Foto de la zona de entrenamiento</div>
-        <div class="foto-local">Foto de la sala de quiromasaje</div>
-      </div>
-    </section>
-  </main>
+        <p class="slogan">
+            ¡Tu bienestar integral en un solo lugar!
+        </p>
 
-  <footer>
-    <p><strong>QuiroMougan</strong> · Santiago de Compostela</p>
-    <p>© <span id="anio"></span> QuiroMougan</p>
-  </footer>
+        <p class="portada-descripcion">
+            Recuperación, movimiento y cuidado corporal en un mismo espacio.
+        </p>
 
-  <script>
-    // Aparición suave de las secciones al entrar en pantalla.
-    const secciones = document.querySelectorAll('.seccion');
+    </header>
 
-    if ('IntersectionObserver' in window) {
-      const observador = new IntersectionObserver((entradas, obs) => {
-        entradas.forEach(entrada => {
-          if (entrada.isIntersecting) {
-            entrada.target.classList.add('visible');
-            obs.unobserve(entrada.target);
-          }
-        });
-      }, { threshold: 0.12 });
+    <!-- MENÚ -->
+    <nav class="menu" aria-label="Navegación principal">
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
 
-      secciones.forEach(seccion => observador.observe(seccion));
-    } else {
-      secciones.forEach(seccion => seccion.classList.add('visible'));
-    }
+    <main>
 
-    document.getElementById('anio').textContent = new Date().getFullYear();
-  </script>
+        <!-- INICIO -->
+        <section class="section" id="inicio">
+            <h2>Bienvenidos a QuiroMougan</h2>
+
+            <div class="inicio-texto">
+                <p>
+                    En QuiroMougan encontrarás un espacio dedicado a tu
+                    bienestar, la recuperación de lesiones y el cuidado
+                    de tu cuerpo.
+                </p>
+
+                <p>
+                    Combinamos diferentes servicios para ayudarte a moverte
+                    mejor, recuperarte y cuidar de ti de una forma cercana
+                    y personalizada.
+                </p>
+            </div>
+        </section>
+
+        <!-- SERVICIOS -->
+        <section class="section" id="servicios">
+            <h2>Nuestros servicios</h2>
+
+            <div class="servicios-grid">
+
+                <article class="servicio">
+                    <div class="foto-servicio">
+                        <!-- Sustituir por una foto del servicio -->
+                        Foto de recuperación de lesiones
+                    </div>
+
+                    <div class="servicio-contenido">
+                        <h3>Recuperación de lesiones</h3>
+                        <p>
+                            Trabajo orientado a recuperar la movilidad
+                            y facilitar una vuelta progresiva a la actividad,
+                            adaptada a cada persona.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="servicio">
+                    <div class="foto-servicio">
+                        <!-- Sustituir por una foto del servicio -->
+                        Foto de entrenamiento personal
+                    </div>
+
+                    <div class="servicio-contenido">
+                        <h3>Entrenamiento personal</h3>
+                        <p>
+                            Entrenamientos adaptados a tus objetivos,
+                            necesidades y nivel para mejorar tu condición
+                            física y mantenerte en movimiento.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="servicio">
+                    <div class="foto-servicio">
+                        <!-- Sustituir por una foto del servicio -->
+                        Foto de quiromasaje deportivo
+                    </div>
+
+                    <div class="servicio-contenido">
+                        <h3>Quiromasaje deportivo</h3>
+                        <p>
+                            Técnicas manuales orientadas al cuidado muscular
+                            y a la recuperación después de la actividad física.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="servicio">
+                    <div class="foto-servicio">
+                        <!-- Sustituir por una foto del servicio -->
+                        Foto de quiromasaje
+                    </div>
+
+                    <div class="servicio-contenido">
+                        <h3>Quiromasaje</h3>
+                        <p>
+                            Un espacio para cuidar el cuerpo, aliviar la
+                            sensación de tensión muscular y dedicarte
+                            un momento de bienestar.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section class="section" id="contacto">
+            <h2>Contacto</h2>
+
+            <div class="contacto-grid">
+
+                <div class="contacto-datos">
+                    <h3>Estamos en Santiago de Compostela</h3>
+
+                    <p>
+                        Ven a conocernos y descubre qué servicio se adapta
+                        mejor a tus necesidades.
+                    </p>
+
+                    <p>
+                        <strong>Ubicación:</strong><br>
+                        Santiago de Compostela
+                    </p>
+
+                    <p>
+                        <strong>Instagram:</strong><br>
+                        <a href="https://www.instagram.com/quiromougan/"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            @quiromougan
+                        </a>
+                    </p>
+
+                    <!-- Añadir el teléfono cuando esté confirmado -->
+                    <p>
+                        <strong>Teléfono:</strong><br>
+                        Próximamente
+                    </p>
+
+                    <!-- Añadir los horarios cuando estén confirmados -->
+                    <p>
+                        <strong>Horario:</strong><br>
+                        Consultar disponibilidad
+                    </p>
+
+                    <a class="boton"
+                       href="https://www.instagram.com/quiromougan/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Escríbenos por Instagram
+                    </a>
+                </div>
+
+                <div class="contacto-fotos">
+
+                    <div class="foto-contacto">
+                        Foto del escaparate de QuiroMougan
+                    </div>
+
+                    <div class="foto-contacto">
+                        Foto de la zona de entrenamiento
+                    </div>
+
+                    <div class="foto-contacto">
+                        Foto de la sala de camilla
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p>
+            © <span id="year"></span> QuiroMougan · Santiago de Compostela
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+    </script>
+
 </body>
 </html>
