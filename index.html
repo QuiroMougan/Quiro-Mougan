@@ -456,17 +456,108 @@
 
         /* PIE DE PÁGINA */
 
-        footer {
-            background-color: var(--morado);
+        /* BANNER FINAL */
+        .banner-final {
+            background: var(--morado);
             color: var(--blanco);
-            text-align: center;
-            padding: 22px 16px;
-            border-top: 5px solid var(--verde-lima);
-            font-size: 0.85rem;
+            padding: 20px clamp(18px, 4vw, 48px);
+            border-top: 4px solid var(--verde-lima);
         }
-
-        footer p {
+        
+        .banner-final-contenido {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(150px, 0.8fr) minmax(0, 2fr);
+            align-items: center;
+            gap: clamp(24px, 5vw, 64px);
+        }
+        
+        .banner-final-logo img {
+            display: block;
+            width: 100%;
+            max-width: 190px;
+            max-height: 100px;
+            object-fit: contain;
+            margin: 0 auto;
+        }
+        
+        .banner-final-derecha {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        
+        .banner-final-marca {
+            text-align: left;
+        }
+        
+        .banner-final-marca p {
             margin: 0;
+            color: var(--blanco);
+            font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+        }
+        
+        .banner-final-datos {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 12px 28px;
+        }
+        
+        .banner-final-dato {
+            display: grid;
+            grid-template-columns: 22px minmax(0, 1fr);
+            align-items: start;
+            gap: 8px;
+            color: var(--blanco);
+            font-size: 0.85rem;
+            line-height: 1.45;
+            overflow-wrap: anywhere;
+        }
+        
+        .banner-final-dato svg {
+            width: 19px;
+            height: 19px;
+            color: var(--verde-lima);
+            margin-top: 1px;
+        }
+        
+        .banner-final-dato a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .banner-final-dato a:hover,
+        .banner-final-dato a:focus-visible {
+            text-decoration: underline;
+            text-decoration-color: var(--verde-lima);
+        }
+        
+        /* ADAPTACIÓN A MÓVILES */
+        @media (max-width: 520px) {
+            .banner-final-contenido {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        
+            .banner-final-logo img {
+                max-width: 145px;
+            }
+        
+            .banner-final-derecha {
+                align-items: flex-start;
+                text-align: left;
+            }
+        
+            .banner-final-marca {
+                text-align: left;
+            }
+        
+            .banner-final-datos {
+                flex-direction: column;
+                gap: 12px;
+            }
         }
 
         /* ANIMACIÓN */
@@ -912,10 +1003,68 @@
     </main>
 
     <!-- PIE DE PÁGINA -->
-    <footer>
-        <p>
-            © <span id="year"></span> QuiroMougan · Santiago de Compostela
-        </p>
+    <footer class="banner-final">
+        <div class="banner-final-contenido">
+    
+            <!-- LOGOTIPO A LA IZQUIERDA -->
+            <div class="banner-final-logo">
+                <img src="images/logo-quiromougan.png"
+                     alt="Logotipo de QuiroMougan"
+                     loading="lazy">
+            </div>
+    
+            <!-- INFORMACIÓN A LA DERECHA -->
+            <div class="banner-final-derecha">
+    
+                <div class="banner-final-marca">
+                    <p><strong>Tu bienestar integral en un solo lugar</strong></p>
+                </div>
+    
+                <div class="banner-final-datos">
+    
+                    <!-- DIRECCIÓN -->
+                    <div class="banner-final-dato">
+                        <svg viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="1.8"
+                             stroke-linecap="round" stroke-linejoin="round"
+                             aria-hidden="true">
+                            <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0z"/>
+                            <circle cx="12" cy="10" r="2.5"/>
+                        </svg>
+    
+                        <span>
+                            Rúa Ramón Cabanillas, 3<br>
+                            Santiago de Compostela
+                        </span>
+                    </div>
+    
+                    <!-- TELÉFONO -->
+                    <div class="banner-final-dato">
+                        <svg viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="1.8"
+                             stroke-linecap="round" stroke-linejoin="round"
+                             aria-hidden="true">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2
+                            19.79 19.79 0 0 1-8.63-3.07
+                            19.5 19.5 0 0 1-6-6
+                            A19.79 19.79 0 0 1 2.12 4.18
+                            2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72
+                            c.12.96.36 1.9.7 2.8
+                            a2 2 0 0 1-.45 2.11L8.09 9.91
+                            a16 16 0 0 0 6 6l1.27-1.27
+                            a2 2 0 0 1 2.11-.45
+                            c.9.34 1.84.58 2.8.7
+                            A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+    
+                        <span>
+                            <a href="tel:+34610268206">610 268 206</a>
+                        </span>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script>
