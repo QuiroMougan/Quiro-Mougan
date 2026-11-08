@@ -223,23 +223,25 @@
             transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
         
-        .servicio:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--sombra);
+        .servicio {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            padding: 0;
+            overflow: hidden;
         }
         
         .foto-servicio {
-            width: 160px;
-            flex: 0 0 160px;
+            position: relative;
+            flex: 0 0 110px;
             align-self: stretch;
             overflow: hidden;
-            background-color: #F0F3EA;
             border-left: 4px solid var(--verde-lima);
-            padding: 0;
         }
         
         .foto-servicio img {
-            display: block;
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -248,16 +250,7 @@
         .servicio-contenido {
             flex: 1;
             min-width: 0;
-            padding: 18px;
-        }
-        
-        .servicio-contenido h3 {
-            margin-bottom: 8px;
-        }
-        
-        .servicio-contenido p {
-            margin-bottom: 0;
-            font-size: 0.95rem;
+            padding: 12px 15px;
         }
 
         /* CONÓCEME: texto que fluye alrededor de la foto circular */
@@ -560,12 +553,11 @@
             }
 
             .foto-servicio {
-                width: 105px;
-                flex-basis: 105px;
+                flex-basis: 85px;
             }
             
             .servicio-contenido {
-                padding: 12px;
+                padding: 10px;
             }
         }
 
