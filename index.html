@@ -254,26 +254,21 @@
         }
 
         /* CONÓCEME: texto que fluye alrededor de la foto circular */
-        /* CONÓCEME */
-
         .sobre-mi-contenido {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 32px;
-            align-items: start;
+            display: flow-root;
         }
-        
+
         .sobre-mi-foto {
             position: relative;
-            float: none;
-            width: 100%;
-            height: 340px;
-            margin: 0;
+            float: left;
+            width: min(32%, 230px);
+            height: 230px;
+            margin: 4px 26px 18px 0;
             overflow: hidden;
             border: none;
-            border-radius: 14px;
-            background: linear-gradient(145deg, #F0F3EA, #E2EBD8);
-            box-shadow: 0 8px 22px rgba(41, 38, 43, 0.10);
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
         }
         
         .sobre-mi-foto img {
@@ -286,7 +281,7 @@
             object-fit: contain;
             object-position: center bottom;
         }
-        
+
         .sobre-mi-foto .foto-placeholder {
             display: none;
         }
