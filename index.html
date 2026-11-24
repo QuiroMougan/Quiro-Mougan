@@ -256,16 +256,17 @@
         /* CONÓCEME */
         .sobre-mi-contenido {
             display: grid;
-            grid-template-columns: minmax(250px, 30%) minmax(0, 1fr);
-            gap: 30px;
+            grid-template-columns: minmax(270px, 32%) minmax(0, 1fr);
+            gap: 22px;
             align-items: center;
+            margin-top: 0;
         }
         
         .sobre-mi-foto {
             position: relative;
             width: 100%;
-            max-width: 260px;
-            height: 300px;
+            max-width: 290px;
+            height: 340px;
             margin: 0 auto;
             overflow: visible;
             background: transparent;
@@ -288,8 +289,9 @@
         
         .sobre-mi-texto {
             min-width: 0;
-            text-align: left;
-            padding: 0;
+            text-align: justify;
+            text-justify: inter-word;
+            padding: 0 25px 0 0;
             align-self: center;
         }
         
@@ -306,6 +308,11 @@
             margin-bottom: 0;
         }
         
+        /* Reducir espacio bajo el título */
+        #sobre-mi > h2 {
+            margin-bottom: 16px;
+        }
+        
         /* Móviles */
         @media (max-width: 650px) {
             .sobre-mi-contenido {
@@ -315,8 +322,12 @@
         
             .sobre-mi-foto {
                 width: 100%;
-                max-width: 260px;
-                height: 280px;
+                max-width: 290px;
+                height: 320px;
+            }
+        
+            .sobre-mi-texto {
+                padding: 0;
             }
         }
 
