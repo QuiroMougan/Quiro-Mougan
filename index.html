@@ -169,10 +169,11 @@
             margin-top: 0;
         }
 
-        /* INICIO: SERVICIOS CON ICONOS SVG */
+        /* INICIO */
 
         .inicio-texto {
-            max-width: 850px;
+            max-width: none;
+            width: 100%;
         }
 
         .inicio-servicios {
@@ -202,6 +203,11 @@
         .inicio-servicio strong {
             color: var(--morado);
             font-weight: bold;
+        }
+
+        .inicio-servicio > span:not(.icono-svg) {
+            flex: 1;
+            min-width: 0;
         }
 
        /* SERVICIOS */
