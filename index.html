@@ -253,22 +253,22 @@
             padding: 12px 15px;
         }
 
-        /* CONÓCEME: texto que fluye alrededor de la foto circular */
+        /* CONÓCEME: fotografía grande junto al texto */
         .sobre-mi-contenido {
-            display: flow-root;
+            display: grid;
+            grid-template-columns: minmax(250px, 30%) minmax(0, 1fr);
+            gap: 30px;
+            align-items: stretch;
         }
-
+        
         .sobre-mi-foto {
             position: relative;
-            float: left;
-            width: min(32%, 230px);
-            height: 230px;
-            margin: 4px 26px 18px 0;
-            overflow: hidden;
-            border: none;
-            border-radius: 0;
+            width: 100%;
+            height: 100%;
+            min-height: 260px;
+            margin: 0;
+            overflow: visible;
             background: transparent;
-            box-shadow: none;
         }
         
         .sobre-mi-foto img {
@@ -279,48 +279,45 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            object-position: center bottom;
+            object-position: center center;
         }
-
+        
         .sobre-mi-foto .foto-placeholder {
             display: none;
         }
-
-        .sobre-mi-foto .foto-placeholder {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 18px;
-            color: var(--morado);
-            text-align: center;
-            font-size: 0.8rem;
-        }
-
-        .sobre-mi-foto .foto-placeholder strong {
-            font-size: 0.95rem;
-        }
-
+        
         .sobre-mi-texto {
             min-width: 0;
             text-align: left;
             padding: 4px 0 0;
         }
-
+        
         .sobre-mi-texto h3 {
             margin: 0 0 12px;
             font-size: clamp(1.2rem, 2vw, 1.5rem);
         }
-
+        
         .sobre-mi-texto p {
             line-height: 1.8;
         }
-
+        
         .sobre-mi-texto p:last-child {
             margin-bottom: 0;
+        }
+        
+        /* Adaptación a móviles */
+        @media (max-width: 650px) {
+            .sobre-mi-contenido {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        
+            .sobre-mi-foto {
+                width: 100%;
+                max-width: 280px;
+                height: 280px;
+                margin: 0 auto;
+            }
         }
 
         /* CONTACTO */
